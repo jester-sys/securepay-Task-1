@@ -131,7 +131,7 @@ Implemented category-based transaction filtering using a Spinner dropdown menu t
     Material Design Components ```
 ```
 Folder Structure
-
+```
 ├── ui/
 │   ├── LoginFragment.java
 │   ├── HomeFragment.java
@@ -146,16 +146,9 @@ Folder Structure
 │   └── ApiService.java
 └── utils/
     └── AuthManager.java
+```
 
-🧑‍💻 Developer Notes
-
-    The app is built to demonstrate security-first Android development.
-
-    Code is modular and scalable.
-
-    Designed with simplicity and clarity for new developers and reviewers.
-
-📦 APK & Run Instructions
+ APK & Run Instructions
 
     Clone the repo
 
