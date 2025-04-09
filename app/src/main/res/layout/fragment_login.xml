@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="Let’s get you signed in and back to secure payments with SecurePay."
         android:textStyle="bold"
-        android:textColor="#B39DDB"
+        android:textColor="#766E6E"
         android:layout_marginStart="14dp"
         android:textSize="14sp"/>
 
