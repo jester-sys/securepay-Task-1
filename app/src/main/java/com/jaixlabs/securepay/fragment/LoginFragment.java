@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.security.crypto.EncryptedSharedPreferences;
 import androidx.security.crypto.MasterKeys;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ public class LoginFragment extends Fragment {
     private FragmentLoginBinding binding;
     private TransactionViewModel viewModel;
     private SharedPreferences sharedPreferences;
+    private static final String TAG = "LoginFragment";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -96,33 +98,44 @@ public class LoginFragment extends Fragment {
 
 
     private void login(String username, String password) {
-        // Show ProgressBar, Hide Button
+        Log.d(TAG, "login: Attempting login with username: " + username);
+
         binding.progressBar.setVisibility(View.VISIBLE);
         binding.loginButton.setEnabled(false);
 
         viewModel.login(username, password).observe(getViewLifecycleOwner(), result -> {
-            // Hide ProgressBar, Enable Button
             binding.progressBar.setVisibility(View.GONE);
             binding.loginButton.setEnabled(true);
 
             if (result != null && result.isSuccessful() && result.body() != null) {
                 String token = result.body().getToken();
-                sharedPreferences.edit().putString("auth_token", token).apply();
+                Log.d(TAG, "login: Login successful, token received: " + token);
+
+                if (sharedPreferences != null) {
+                    sharedPreferences.edit().putString("auth_token", token).apply();
+                    Log.d(TAG, "login: Token saved to EncryptedSharedPreferences");
+                } else {
+                    Log.e(TAG, "login: SharedPreferences is null");
+                }
 
                 Toast.makeText(getContext(), "Login Success", Toast.LENGTH_SHORT).show();
 
                 NavHostFragment.findNavController(this)
                         .navigate(R.id.action_loginFragment_to_homeFragment);
+                Log.d(TAG, "login: Navigating to HomeFragment");
             } else {
                 String message = "Login Failed";
+                Log.e(TAG, "login: Login failed");
 
                 if (result == null) {
                     message = "No response from server";
+                    Log.e(TAG, "login: No response from server");
                 } else if (result.errorBody() != null) {
                     try {
                         message = result.errorBody().string();
+                        Log.e(TAG, "login: Error message from server: " + message);
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        Log.e(TAG, "login: Error parsing errorBody", e);
                     }
                 }
 
@@ -134,7 +147,9 @@ public class LoginFragment extends Fragment {
     private boolean isInternetAvailable() {
         ConnectivityManager cm = (ConnectivityManager) requireContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        return activeNetwork != null && activeNetwork.isConnected();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnected();
+        Log.d(TAG, "isInternetAvailable: " + isConnected);
+        return isConnected;
     }
 
     @Override

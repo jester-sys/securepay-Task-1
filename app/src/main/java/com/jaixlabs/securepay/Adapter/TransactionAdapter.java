@@ -1,6 +1,7 @@
 package com.jaixlabs.securepay.Adapter;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.*;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -60,8 +61,10 @@ public class TransactionAdapter extends ListAdapter<Transaction, TransactionAdap
         holder.cat.setText(t.getCategory());
         holder.desc.setText(t.getDescription());
     }
-    public void setTransactions(List<Transaction> newList) {
-        submitList(new ArrayList<>(newList)); // defensive copy
+    public void setTransactions(List<Transaction> transactions) {
+        Log.d("Adapter", "Transactions submitted to adapter: " + transactions.size());
+        submitList(transactions);
     }
+
 
 }

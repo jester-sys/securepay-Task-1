@@ -153,7 +153,7 @@ public class HomeFragment extends Fragment {
         BiometricUtil.showBiometricPrompt(requireActivity(), new BiometricPrompt.AuthenticationCallback() {
             @Override
             public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
-             //   fetchTransactions(token);
+                //   fetchTransactions(token);
                 fetchDataBasedOnNetwork(token);
             }
 
@@ -214,7 +214,7 @@ public class HomeFragment extends Fragment {
                 .setTitle("Biometric Authentication")
                 .setMessage("Biometric authentication was not completed. Do you want to continue without it?")
                 .setPositiveButton("Continue", (dialog, which) -> {
-                //    fetchTransactions(token);
+                    //    fetchTransactions(token);
                     fetchDataBasedOnNetwork(token);
                 })
                 .setNegativeButton("Retry", (dialog, which) -> {
@@ -276,5 +276,4 @@ public class HomeFragment extends Fragment {
 
 
 }
-
 
