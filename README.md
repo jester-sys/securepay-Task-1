@@ -7,6 +7,7 @@ Designed for reliability and user convenience, the app also supports dark mode, 
 
 This project is ideal for demonstrating secure login flows, token-based REST API integration, biometric access, and real-time UI updates — making it a solid reference for developers building fintech, e-commerce, or crypto-related Android apps.
 
+
 > ✅ **Note**: App name and icon are AI-generated placeholders for demo purposes.
 
 ---
