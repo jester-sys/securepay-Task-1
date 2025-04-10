@@ -1,7 +1,11 @@
 
-# 💳 Android App – Secure Transactions with Biometric Auth & API Integration
+Android App – Real-Time Price Tracker with Secure Biometric Login & API Integration
 
-This Android application demonstrates **secure user login**, **transaction listing**, and **biometric authentication** for subsequent access. The app is built using **Java**, integrates with REST APIs, and uses **modern Android security standards** like `EncryptedSharedPreferences` and **BiometricPrompt API**.
+This Android application showcases a secure and real-time price tracking system with robust user authentication mechanisms. Built using Java and following the MVVM architectural pattern, the app integrates REST APIs to fetch login credentials and live price data. It enhances security by implementing Biometric Authentication (Fingerprint) and EncryptedSharedPreferences to store sensitive information like tokens securely.
+
+Designed for reliability and user convenience, the app also supports dark mode, offline access using Room DB, and search/filter options for a smooth user experience. Users can securely log in, view real-time price changes in a sleek RecyclerView, and track historical price trends using MPAndroidChart. The integration of Firebase Cloud Messaging (FCM) ensures timely notifications when prices fluctuate.
+
+This project is ideal for demonstrating secure login flows, token-based REST API integration, biometric access, and real-time UI updates — making it a solid reference for developers building fintech, e-commerce, or crypto-related Android apps.
 
 > ✅ **Note**: App name and icon are AI-generated placeholders for demo purposes.
 
@@ -150,12 +154,16 @@ Folder Structure
 
  APK & Run Instructions
 
+    APK & Build Instructions
+
     Clone the repo
 
     Open in Android Studio
 
-    Build APK or Run on Emulator
+    Sync Gradle & Run on Emulator or Device
 
-    Test using dummy credentials provided by the backend team
+    Test with dummy credentials provided by backend
+
+    Login once and biometric will handle future access
 
 
