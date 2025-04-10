@@ -62,7 +62,8 @@ BiometricPrompt biometricPrompt = new BiometricPrompt(
 biometricPrompt.authenticate(promptInfo);
 ```
 
-EncryptedSharedPreferences Code
+## EncryptedSharedPreferences Code
+
 ```
 SharedPreferences sharedPreferences = EncryptedSharedPreferences.create(
     "secure_prefs",
@@ -92,7 +93,8 @@ sharedPreferences.edit().putString("auth_token", token).apply();
 // Retrieve token
 String token = sharedPreferences.getString("auth_token", null);
 ```
-Logout Functionality
+## Logout Functionality
+
 ```
 new MaterialAlertDialogBuilder(context)
     .setTitle("Logout")
